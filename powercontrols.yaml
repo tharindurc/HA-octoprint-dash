@@ -1,0 +1,245 @@
+type: vertical-stack
+cards:
+  - type: markdown
+    content: Power Controls
+    style:
+      .: |
+        ha-card {
+          border-radius: 10px;
+          font-size: 20px;
+          padding-left: 15px;
+          font-weight: bold;
+          font-variant: small-caps;
+          color: rgb(6, 144, 143);
+        }
+    theme: noctis
+  - type: custom:button-card
+    entity: switch.ender
+    aspect_ratio: 4/1
+    layout: icon_name
+    name: Turn ON
+    state:
+      - color: rgb(195, 60, 84)
+        icon: mdi:printer-3d-nozzle
+        name: Turn OFF
+        value: 'on'
+      - color: rgb(76,175,80)
+        operator: default
+    styles:
+      card:
+        - border-radius: 10px
+      name:
+        - font-size: 25px
+        - font-variant: small-caps
+      icon:
+        - width: 30%
+    lock:
+      enabled: true
+      unlock: double_tap
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: sensor.ender_energy_power
+        name: Power
+        show_state: true
+        styles:
+          name:
+            - justify-self: start
+            - padding-left: 15px
+            - font-weight: bold
+            - margin-top: 20px
+          grid:
+            - position: relative
+          state:
+            - justify-self: start
+            - padding-left: 15px
+            - margin-bottom: 2px
+          icon:
+            - width: 28%
+            - color: null
+            - padding-right: 80px
+            - margin-top: 5px
+      - type: custom:button-card
+        entity: sensor.ender_energy_current
+        name: Current
+        show_state: true
+        styles:
+          name:
+            - justify-self: start
+            - padding-left: 15px
+            - font-weight: bold
+            - margin-top: 20px
+          grid:
+            - position: relative
+          state:
+            - justify-self: start
+            - padding-left: 15px
+            - margin-bottom: 2px
+          icon:
+            - width: 28%
+            - color: null
+            - padding-right: 80px
+            - margin-top: 5px
+      - type: custom:button-card
+        entity: sensor.ender_energy_voltage
+        name: Voltage
+        show_state: true
+        styles:
+          name:
+            - justify-self: start
+            - padding-left: 15px
+            - font-weight: bold
+            - margin-top: 20px
+          grid:
+            - position: relative
+          state:
+            - justify-self: start
+            - padding-left: 15px
+            - margin-bottom: 2px
+          icon:
+            - width: 28%
+            - color: null
+            - padding-right: 80px
+            - margin-top: 5px
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            entity: sensor.ender_energy_total
+            name: Enery Use
+            show_icon: false
+            show_state: true
+            styles:
+              card:
+                - border-radius: 10px
+              name:
+                - justify-self: start
+                - padding-left: 15px
+                - font-weight: bold
+              grid:
+                - position: relative
+              state:
+                - justify-self: start
+                - padding-left: 15px
+          - type: custom:button-card
+            entity: sensor.ender_energy_today
+            name: Today Enery Use
+            show_icon: false
+            show_state: true
+            styles:
+              card:
+                - border-radius: 10px
+              name:
+                - justify-self: start
+                - padding-left: 15px
+                - font-weight: bold
+              grid:
+                - position: relative
+              state:
+                - justify-self: start
+                - padding-left: 15px
+  - type: custom:button-card
+    color_type: blank-card
+  - type: custom:button-card
+    color_type: blank-card
+  - type: markdown
+    content: >
+      Octoprint: {% if is_state('binary_sensor.ender_03_connected', 'off') %}
+      Disconnected {% elif is_state('binary_sensor.ender_03_connected', 'on') %}
+      Connected {%endif%}
+    style:
+      .: |
+        ha-card {
+          border-radius: 10px;
+          font-size: 20px;
+          padding-left: 15px;
+          font-weight: bold;
+          font-variant: small-caps;
+          color: rgb(6, 144, 143);
+        }
+    theme: noctis
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                icon: mdi:server-network
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: shell_command.octoprint_connect
+                styles:
+                  card:
+                    - border-radius: 10px
+                  icon:
+                    - color: '#1db9c3'
+              - type: custom:button-card
+                icon: mdi:server-network-off
+                show_icon: true
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: shell_command.octoprint_disconnect
+                styles:
+                  card:
+                    - border-radius: 10px
+                  icon:
+                    - color: '#ff7878'
+          - type: custom:button-card
+            entity: input_select.temperature_select
+            name: Start Printing
+            layout: name_state
+            show_icon: false
+            show_state: true
+            aspect_ratio: 4/1
+            tap_action:
+              action: more-info
+            hold_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.temperature_select
+      - type: custom:button-card
+        name: Ocotprint
+        aspect_ratio: 1.9/1
+        show_entity_picture: true
+        entity_picture: /local/octologo.png
+        tap_action:
+          action: url
+          url_path: http://192.168.1.4:5000
+  - type: horizontal-stack
+    cards:
+      - type: markdown
+        content: >
+          NOZZLE : {{states('sensor.ender_03_tool_0_temperature') | round(0) }}
+          °C / {{states('sensor.ender_03_tool_0_target') | round(0) }} °C
+        style:
+          .: |
+            ha-card {
+              border-radius: 10px;
+              font-size: 15px;
+              padding-left: 15px;
+              font-weight: bold;
+              font-variant: small-caps;
+              color: rgb(180, 180, 158);
+            }
+        theme: noctis
+      - type: markdown
+        content: >
+          BED : {{states('sensor.ender_03_bed_temperature') | round(0) }} °C /
+          {{states('sensor.ender_03_bed_target') | round(0) }} °C
+        style:
+          .: |
+            ha-card {
+              border-radius: 10px;
+              font-size: 15px;
+              padding-left: 35px;
+              font-weight: bold;
+              font-variant: small-caps;
+              color: rgb(180, 180, 158);
+            }
+        theme: noctis

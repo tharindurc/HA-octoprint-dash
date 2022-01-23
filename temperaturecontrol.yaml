@@ -1,0 +1,138 @@
+type: custom:collapsable-cards
+title: Temperature Controls
+buttonStyle: >
+  font-size: 20px;      border-radius: 5px; font-size: 20px; padding-left: 15px;
+  font-weight: bold; font-variant: small-caps; color: rgb(255, 171, 145);
+cards:
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: entities
+            entities:
+              - entity: input_number.bed
+                type: custom:numberbox-card
+                style: |
+                  .grid-left{font-variant: small-caps}
+                  .grid-left{font-weight:  bold}
+            style: |
+              ha-card {
+                border-radius: 10px;   
+              }
+          - type: entities
+            entities:
+              - entity: input_number.hotend
+                type: custom:numberbox-card
+                style: |
+                  .grid-left{font-variant: small-caps}
+                  .grid-left{font-weight:  bold}
+            style: |
+              ha-card {
+                border-radius: 10px;
+              }
+      - type: markdown
+        content: 'Controls '
+        style:
+          .: |
+            ha-card {
+              border-radius: 5px;
+              font-size: 15px;
+              font-weight: bold;
+              font-variant: small-caps;
+              padding-left: 15px;
+              color: rgb(255, 171, 145);
+
+            }
+        theme: noctis
+      - type: custom:button-card
+        color_type: blank-card
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            color_type: card
+            icon: mdi:printer-3d-nozzle
+            name: Heat Bed & Nozzle
+            aspect_ratio: 3/1
+            show_icon: false
+            color: rgb(255, 171, 145)
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.preheat
+            styles:
+              card:
+                - border-radius: 10px
+                - font-size: 15px
+              name:
+                - font-weight: bold
+          - type: custom:button-card
+            color_type: card
+            color: rgb(129, 212, 250)
+            icon: mdi:printer-3d-nozzle
+            name: Cool Down
+            aspect_ratio: 3/1
+            show_icon: false
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.cooldown
+            styles:
+              card:
+                - border-radius: 10px
+                - font-size: 15px
+              name:
+                - font-weight: bold
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            color_type: label
+            name: Heat Bed
+            aspect_ratio: 2/1
+            show_icon: false
+            styles:
+              card:
+                - border-radius: 15px
+                - font-size: 15px
+            tap_action:
+              action: call-service
+              service: shell_command.octoprint_temp_bed
+          - type: custom:button-card
+            color_type: label
+            name: Cool Bed
+            aspect_ratio: 2/1
+            show_icon: false
+            styles:
+              card:
+                - border-radius: 15px
+                - font-size: 15px
+            tap_action:
+              action: call-service
+              service: shell_command.octoprint_cool_bed
+          - type: custom:button-card
+            color_type: label
+            name: Heat Hotend
+            aspect_ratio: 2/1
+            show_icon: false
+            styles:
+              card:
+                - border-radius: 15px
+                - font-size: 15px
+            tap_action:
+              action: call-service
+              service: shell_command.octoprint_temp_end
+          - type: custom:button-card
+            color_type: label
+            name: Cool Hotend
+            aspect_ratio: 2/1
+            show_icon: false
+            styles:
+              card:
+                - border-radius: 15px
+                - font-size: 15px
+            tap_action:
+              action: call-service
+              service: shell_command.octoprint_cool_hotend
+view_layout:
+  position: sidebar
