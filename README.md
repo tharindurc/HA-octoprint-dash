@@ -1,4 +1,4 @@
-# Homeassistant-Files
+# Dash Files
 
 
 **Power and Main Screen**
