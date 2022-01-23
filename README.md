@@ -22,7 +22,7 @@ Custom Button Card - https://github.com/custom-cards/button-card
 
 Custom Collapsable Card - https://github.com/RossMcMillan92/lovelace-collapsable-cards
 
-Theme : 
+Theme : https://github.com/aFFekopp/noctis
 
 **Octoprint Plugin**
 
