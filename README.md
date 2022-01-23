@@ -16,7 +16,7 @@
 ![Temperature](https://user-images.githubusercontent.com/15265803/150678879-574dca58-c563-45bc-90ad-e5f923e83bde.jpg)
 
 
-**Homeassistant Card Used**
+**Homeassistant Cards**
 
 Custom Button Card - https://github.com/custom-cards/button-card
 
