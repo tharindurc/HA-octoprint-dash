@@ -19,6 +19,7 @@
 **Homeassistant Card Used **
 
 Custom Button Card - https://github.com/custom-cards/button-card
+
 Custom Collapsable Card - https://github.com/RossMcMillan92/lovelace-collapsable-cards
 
 **Octoprint Plugin**
