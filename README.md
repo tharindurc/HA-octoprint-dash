@@ -26,5 +26,11 @@ Custom Collapsable Card - https://github.com/RossMcMillan92/lovelace-collapsable
 
 Homeassistant Discovery - https://plugins.octoprint.org/plugins/homeassistant/
 
+To Control the axes and temperature im using shell commands (Check shell commands file). Need to add them in config yaml files. 
+In that replace the API_KEY with octoprint API Key and IP & Port with your Octoprint Instance IP & Port.
+
+After creating the shell commands.Call-service action commands can be used to 
+
+
 
 
