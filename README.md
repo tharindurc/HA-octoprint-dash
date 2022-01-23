@@ -14,3 +14,12 @@
 **Temperature Controls**
 
 ![Temperature](https://user-images.githubusercontent.com/15265803/150678879-574dca58-c563-45bc-90ad-e5f923e83bde.jpg)
+
+
+**Homeassistant Card Used **
+
+Custom Button Card - https://github.com/custom-cards/button-card
+Custom Collapsable Card - https://github.com/RossMcMillan92/lovelace-collapsable-cards
+
+**Octoprint Plugin**
+
