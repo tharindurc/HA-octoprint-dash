@@ -1,4 +1,4 @@
-# Dash Files
+# Dashboard Files
 
 
 **Power and Main Screen**
