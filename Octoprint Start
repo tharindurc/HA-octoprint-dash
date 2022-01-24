@@ -1,3 +1,4 @@
+
 alias: Octoprint Start
 sequence:
   - service: switch.turn_on
