@@ -1,0 +1,23 @@
+alias: Octoprint Start
+sequence:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.ender
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: shell_command.octoprint_connect
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: shell_command.octoprint_heatup_bed
+    data: {}
+  - service: shell_command.octoprint_heatup_hotend
+    data: {}
+mode: single
+icon: mdi:printer-3d-nozzle
