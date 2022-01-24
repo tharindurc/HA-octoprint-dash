@@ -1,3 +1,4 @@
+
 alias: cooldown
 sequence:
   - service: shell_command.octoprint_cool_bed
