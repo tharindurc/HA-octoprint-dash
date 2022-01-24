@@ -1,0 +1,31 @@
+alias: Heat Bed
+sequence:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: PLA
+        sequence:
+          - service: shell_command.octoprint_heatup_bed
+            data: {}
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: ABS
+        sequence:
+          - service: shell_command.octoprint_heatup_bed_abs
+            data: {}
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: TPU
+        sequence:
+          - service: shell_command.octoprint_heatup_bed_tpu
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: PETG
+        sequence:
+          - service: shell_command.octoprint_heatup_bed_petg
+    default: []
+mode: single
