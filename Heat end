@@ -1,0 +1,31 @@
+alias: Heat end
+sequence:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: PLA
+        sequence:
+          - service: shell_command.octoprint_heatup_hotend
+            data: {}
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: ABS
+        sequence:
+          - service: shell_command.octoprint_heatup_hotend_abs
+            data: {}
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: TPU
+        sequence:
+          - service: shell_command.octoprint_heatup_hotend_tpu
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: PETG
+        sequence:
+          - service: shell_command.octoprint_heatup_hotend_petg
+    default: []
+mode: single
