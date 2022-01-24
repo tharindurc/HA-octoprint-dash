@@ -1,0 +1,32 @@
+alias: Temperature select
+sequence:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: PLA
+        sequence:
+          - service: script.turn_on
+            data: {}
+            entity_id: script.octoprint_start
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: PETG
+        sequence:
+          - service: script.turn_on
+            data: {}
+            entity_id: script.octoprint_start_abs
+      - conditions:
+          - condition: state
+            entity_id: input_select.temperature_select
+            state: TPU
+        sequence:
+          - service: script.turn_on
+            data: {}
+            entity_id: script.octoprint_start_tpu
+    default:
+      - service: switch.turn_off
+        data: {}
+        entity_id: switch.ender
+mode: single
