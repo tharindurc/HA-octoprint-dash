@@ -35,5 +35,9 @@ In that replace the API_KEY with octoprint API Key and IP & Port with your Octop
 After creating the shell commands. Call-service action can be used trigger them.
 
 
+**Input Helpers Needed**
+
+![Helpers](https://user-images.githubusercontent.com/15265803/150763846-58f1437a-f3b5-4672-b04a-5e825efbbe83.jpg)
+
 
 
